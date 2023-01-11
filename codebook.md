@@ -8,7 +8,7 @@ A full description is available at the site where the data was obtained: <http:/
 
 The data for the project and more descriptive labels are shown in the files: <https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip>
 
-**Steps to clean up data**
+**Steps to clean up data **
 
 You should create one R script called run_analysis.R that does the following.
 
