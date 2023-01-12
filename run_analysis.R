@@ -16,24 +16,24 @@ setwd("./UCI HAR Dataset")
 
 ## Reading Activity files
 ActivityLabels <- read.table("./activity_labels.txt", header = F)
-ActivityTest <- read.table("./test/y_test.txt", header = F)
-ActivityTrain <- read.table("./train/y_train.txt", header = F)
-Activity <- rbind(ActivityTest,ActivityTrain) %>% 
+YTest <- read.table("./test/y_test.txt", header = F)
+YTrain <- read.table("./train/y_train.txt", header = F)
+Activity <- rbind(YTest,YTrain) %>% 
   left_join(ActivityLabels,by = "V1")
 colnames(Activity) <- c("ActivityID","Activity")
 
 ## Read features files
 Features <- read.table("./features.txt", header = F)
-FeaturesTest <- read.table("./test/X_test.txt", header = F)
-FeaturesTrain <- read.table("./train/X_train.txt", header = F)
+XTest <- read.table("./test/X_test.txt", header = F)
+XTrain <- read.table("./train/X_train.txt", header = F)
 
 ## Read subject files
 SubjectTest <- read.table("./test/subject_test.txt", header = F)
 SubjectTrain <- read.table("./train/subject_train.txt", header = F)
 
 ## Combining all test and train data
-Testdf <- cbind(SubjectTest,FeaturesTest)
-Traindf <- cbind(SubjectTrain,FeaturesTrain)
+Testdf <- cbind(SubjectTest,XTest)
+Traindf <- cbind(SubjectTrain,XTrain)
 tidy <- rbind(Testdf,Traindf)
 tidy <- cbind(Activity$Activity,tidy)
 colnames(tidy) <- c("Activity","Subject",Features[[2]])
